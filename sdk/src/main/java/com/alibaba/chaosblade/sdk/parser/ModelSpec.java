@@ -1,51 +1,64 @@
 package com.alibaba.chaosblade.sdk.parser;
 
+import java.util.List;
+
 public class ModelSpec {
 
-    private String name;
+    private String target;
 
-    private String desc;
+    private String shortDesc;
 
-    private boolean noArgs;
+    private String longDesc;
 
-    private boolean required;
+    private String example;
 
-    public ModelSpec(String name, String desc, boolean noArgs, boolean required){
-        this.name=name;
-        this.desc=desc;
-        this.noArgs=noArgs;
-        this.required=required;
+    private List<ActionSpec> actions;
+
+    public ModelSpec(String target, String shortDesc, String longDesc, String example, List<ActionSpec> actions) {
+        this.target = target;
+        this.shortDesc = shortDesc;
+        this.longDesc = longDesc;
+        this.example = example;
+        this.actions = actions;
     }
 
-    public String getName() {
-        return name;
+    public String getTarget() {
+        return target;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTarget(String target) {
+        this.target = target;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getShortDesc() {
+        return shortDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setShortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
     }
 
-    public boolean isNoArgs() {
-        return noArgs;
+    public String getLongDesc() {
+        return longDesc;
     }
 
-    public void setNoArgs(boolean noArgs) {
-        this.noArgs = noArgs;
+    public void setLongDesc(String longDesc) {
+        this.longDesc = longDesc;
     }
 
-    public boolean isRequired() {
-        return required;
+    public String getExample() {
+        return example;
     }
 
-    public void setRequired(boolean required) {
-        this.required = required;
+    public void setExample(String example) {
+        this.example = example;
+    }
+
+    public List<ActionSpec> getActions() {
+        return actions;
+    }
+
+    public void setActions(List<ActionSpec> actions) {
+        this.actions = actions;
     }
 }
