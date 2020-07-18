@@ -14,12 +14,15 @@ public class ModelSpec {
 
     private List<ActionSpec> actions;
 
-    public ModelSpec(String target, String shortDesc, String longDesc, String example, List<ActionSpec> actions) {
+    private String scope;
+
+    public ModelSpec(String target, String shortDesc, String longDesc, String example, List<ActionSpec> actions, String scope) {
         this.target = target;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         this.example = example;
         this.actions = actions;
+        this.scope = scope;
     }
 
     public String getTarget() {
@@ -60,5 +63,13 @@ public class ModelSpec {
 
     public void setActions(List<ActionSpec> actions) {
         this.actions = actions;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
     }
 }
