@@ -15,14 +15,14 @@ class ParserTests {
     @Test
     void contextLoads() {
 
-        assertThat(modelParser.parseYMLtoObject()).isNotNull();
+        assertThat(modelParser.getAllModels()).isNotNull();
 
     }
 
     @Test
     void checkModelSpec(){
 
-        ModelSpec modelSpec = modelParser.parseYMLtoObject().get(0);
+        ModelSpec modelSpec = modelParser.getAllModels().get(0);
 
         assertThat(modelSpec.getTarget()).isEqualTo("cpu");
         assertThat(modelSpec.getLongDesc()).isEqualTo("Cpu experiment, for example full load");
@@ -36,7 +36,7 @@ class ParserTests {
     @Test
     void checkActionSpec(){
 
-        ActionSpec actionSpec = modelParser.parseYMLtoObject().get(0).getActions().get(0);
+        ActionSpec actionSpec = modelParser.getAllModels().get(0).getActions().get(0);
 
         assertThat(actionSpec.getAction()).isEqualTo("fullload");
         assertThat(actionSpec.getAliases().get(0)).isEqualTo("fl");
@@ -50,7 +50,7 @@ class ParserTests {
     @Test
     void checkMatcherSpec(){
 
-        MatcherSpec matcherSpec = modelParser.parseYMLtoObject().get(2).getActions().get(0).getMatchers().get(0);
+        MatcherSpec matcherSpec = modelParser.getAllModels().get(2).getActions().get(0).getMatchers().get(0);
 
         assertThat(matcherSpec.getName()).isEqualTo("process");
         assertThat(matcherSpec.getDesc()).isEqualTo("Process name");
@@ -62,12 +62,23 @@ class ParserTests {
     @Test
     void checkFlagSpec(){
 
-        FlagSpec flagSpec = modelParser.parseYMLtoObject().get(2).getActions().get(0).getFlags().get(0);
+        FlagSpec flagSpec = modelParser.getAllModels().get(2).getActions().get(0).getFlags().get(0);
 
         assertThat(flagSpec.getName()).isEqualTo("timeout");
         assertThat(flagSpec.getDesc()).isEqualTo("set timeout for experiment");
         assertThat(flagSpec.isNoArgs()).isFalse();
         assertThat(flagSpec.isRequired()).isFalse();
+
+    }
+
+    @Test
+    void checkGetObjectByTarget(){
+
+        ModelSpec modelSpec = modelParser.getObjectByTargetName("cpu");
+        assertThat(modelSpec).isNotNull();
+
+        modelSpec = modelParser.getObjectByTargetName("Cpu");
+        assertThat(modelSpec).isNull();
 
     }
 

@@ -13,12 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Randika Jayasekara
+ */
+
 @Service
 public class ModelParser {
 
     Logger logger = LoggerFactory.getLogger(ModelParser.class);
 
-    public List<ModelSpec> parseYMLtoObject(){
+    public List<ModelSpec> getAllModels(){
         
         Gson gson = new Gson();
         Yaml yaml = new Yaml();
@@ -40,6 +44,35 @@ public class ModelParser {
             logger.error("Problem in reading the file");
         }
         return modelSpecList;
+    }
+
+    public ModelSpec getObjectByTargetName(String target){
+
+        Gson gson = new Gson();
+        Yaml yaml = new Yaml();
+        ModelSpec pojo = null;
+
+        try {
+            InputStream inputStream = this.getClass()
+                    .getClassLoader()
+                    .getResourceAsStream("chaosblade.spec.yml");
+            Map<String, Object> obj = yaml.load(inputStream);
+            List<Map<String, Object>>  items = (List<Map<String, Object>>) (List<?>) obj.get("items");
+            for(Map<String, Object> item: items){
+                if(item.get("target").equals(target)){
+                    JsonElement jsonElement = gson.toJsonTree(item);
+                    pojo = gson.fromJson(jsonElement, ModelSpec.class);
+                    break;
+                }
+            }
+            if(pojo==null){
+                logger.error("No such target name exsists");
+            }
+
+        }catch (YAMLException e){
+            logger.error("Problem in reading the file");
+        }
+        return pojo;
     }
 
 }
