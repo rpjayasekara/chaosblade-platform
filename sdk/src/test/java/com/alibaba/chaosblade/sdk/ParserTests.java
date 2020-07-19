@@ -74,10 +74,10 @@ class ParserTests {
     @Test
     void checkGetObjectByTarget(){
 
-        ModelSpec modelSpec = modelParser.getObjectByTargetName("cpu");
+        ModelSpec modelSpec = modelParser.getModelByTargetName("cpu");
         assertThat(modelSpec).isNotNull();
 
-        modelSpec = modelParser.getObjectByTargetName("Cpu");
+        modelSpec = modelParser.getModelByTargetName("Cpu");
         assertThat(modelSpec).isNull();
 
     }

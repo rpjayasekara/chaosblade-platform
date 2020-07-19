@@ -46,7 +46,7 @@ public class ModelParser {
         return modelSpecList;
     }
 
-    public ModelSpec getObjectByTargetName(String target){
+    public ModelSpec getModelByTargetName(String target){
 
         Gson gson = new Gson();
         Yaml yaml = new Yaml();
@@ -66,7 +66,7 @@ public class ModelParser {
                 }
             }
             if(pojo==null){
-                logger.error("No such target name exsists");
+                logger.error("No such target name exists");
             }
 
         }catch (YAMLException e){
