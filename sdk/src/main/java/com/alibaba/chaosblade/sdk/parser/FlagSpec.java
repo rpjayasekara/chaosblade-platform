@@ -1,5 +1,8 @@
 package com.alibaba.chaosblade.sdk.parser;
 
+/**
+ * @author randika
+ */
 public class FlagSpec {
 
     private String name;

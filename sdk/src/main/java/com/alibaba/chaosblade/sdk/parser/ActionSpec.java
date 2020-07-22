@@ -1,13 +1,16 @@
 package com.alibaba.chaosblade.sdk.parser;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+/**
+ * @author randika
+ */
 public class ActionSpec {
 
     private String action;
 
-    private ArrayList<String> aliases;
+    private List<String> aliases;
 
     private String shortDesc;
 
@@ -17,7 +20,7 @@ public class ActionSpec {
 
     private List<FlagSpec> flags;
 
-    public ActionSpec(String action, ArrayList<String> aliases, String shortDesc, String longDesc, List<MatcherSpec> matchers, List<FlagSpec> flags) {
+    public ActionSpec(String action, List<String> aliases, String shortDesc, String longDesc, List<MatcherSpec> matchers, List<FlagSpec> flags) {
         this.action = action;
         this.aliases = aliases;
         this.shortDesc = shortDesc;
@@ -34,11 +37,11 @@ public class ActionSpec {
         this.action = action;
     }
 
-    public ArrayList<String> getAliases() {
+    public List<String> getAliases() {
         return aliases;
     }
 
-    public void setAliases(ArrayList<String> aliases) {
+    public void setAliases(List<String> aliases) {
         this.aliases = aliases;
     }
 

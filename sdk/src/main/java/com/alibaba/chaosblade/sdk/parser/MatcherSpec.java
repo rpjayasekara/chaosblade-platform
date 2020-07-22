@@ -1,6 +1,10 @@
 package com.alibaba.chaosblade.sdk.parser;
 
+/**
+ * @author randika
+ */
 public class MatcherSpec {
+
     private String name;
 
     private String desc;

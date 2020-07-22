@@ -2,6 +2,9 @@ package com.alibaba.chaosblade.sdk.parser;
 
 import java.util.List;
 
+/**
+ * @author randika
+ */
 public class ModelSpec {
 
     private String target;
