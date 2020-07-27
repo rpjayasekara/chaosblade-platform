@@ -14,6 +14,10 @@ public class StatusResponse {
 
     private StatusResult result;
 
+    public StatusResponse(){
+        //        to create the pojo
+    }
+
     public int getCode() {
         return code;
     }

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author randika
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateResponse {
+public class DestroyResponse {
 
     private int code;
 
@@ -14,7 +14,7 @@ public class CreateResponse {
 
     private String result;
 
-    public CreateResponse(){
+    public DestroyResponse(){
 //        to create the pojo
     }
 
@@ -41,4 +41,5 @@ public class CreateResponse {
     public void setResult(String result) {
         this.result = result;
     }
+
 }

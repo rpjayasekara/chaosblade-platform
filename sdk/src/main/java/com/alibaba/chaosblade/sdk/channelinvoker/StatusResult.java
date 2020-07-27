@@ -24,6 +24,10 @@ public class StatusResult {
 
     private String UpdateTime;
 
+    public StatusResult(){
+        // to create the pojo
+    }
+
     public String getUid() {
         return Uid;
     }
