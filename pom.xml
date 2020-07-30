@@ -10,6 +10,7 @@
 
     <modules>
         <module>sdk</module>
+        <module>record-manager</module>
     </modules>
 
 </project>
