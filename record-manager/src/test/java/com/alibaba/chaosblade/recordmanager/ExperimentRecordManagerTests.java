@@ -32,41 +32,6 @@ public class ExperimentRecordManagerTests {
     static class TestConfiguration {
     }
 
-    @Test
-    void contextLoads() {
-
-        Flag flag1 = new Flag("offset", "100");
-        Flag flag2 = new Flag("time", "200");
-        Matcher matcher1 = new Matcher("local-port", "80");
-        Matcher matcher2 = new Matcher("interface", "eth0");
-
-        List<Flag> flags = new ArrayList<>();
-        flags.add(flag1);
-        flags.add(flag2);
-
-        List<Matcher> matchers = new ArrayList<>();
-        matchers.add(matcher1);
-        matchers.add(matcher2);
-
-        Host host = new Host();
-        host.setHostIP("123.12.3.3");
-        host.setHostPort(8080);
-        host.setHostName("myHost");
-
-
-        Experiment experiment = new Experiment();
-        experiment.setUid("2345");
-        experiment.setHost(host);
-        experiment.setAction("delay");
-        experiment.setTarget("network");
-        experiment.setDateCreated(new Date());
-        experiment.setFlags(flags);
-        experiment.setMatchers(matchers);
-        experiment.setStatus("success");
-
-        assertThat(experimentRecordManager.saveExperimentRecord(experiment)).isNotNull();
-
-    }
 
     @Test
     void testSaveExperimentRecord(){
