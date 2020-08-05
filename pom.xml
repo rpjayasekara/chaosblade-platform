@@ -11,6 +11,7 @@
     <modules>
         <module>sdk</module>
         <module>record-manager</module>
+        <module>chaosblade-webapp</module>
     </modules>
 
 </project>
