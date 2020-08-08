@@ -1,0 +1,43 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">ChaosBlade Platform </div>
+    <div class="list-group list-group-flush">
+      <a routerLink="/" class="list-group-item list-group-item-action bg-light">Create Experiment</a>
+      <a routerLink="/addhost" class="list-group-item list-group-item-action bg-light">Add Host</a>
+      <a routerLink="/history" class="list-group-item list-group-item-action bg-light">Experiment History</a>
+      <a routerLink="/hostmanager" class="list-group-item list-group-item-action bg-light">Host Manager</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <section>
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
