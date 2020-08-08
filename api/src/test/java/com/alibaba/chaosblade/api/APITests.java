@@ -1,10 +1,10 @@
-package com.alibaba.chaosblade.webapp;
+package com.alibaba.chaosblade.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebappApplicationTests {
+class APITests {
 
 	@Test
 	void contextLoads() {

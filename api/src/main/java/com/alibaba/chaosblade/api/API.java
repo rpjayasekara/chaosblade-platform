@@ -1,13 +1,13 @@
-package com.alibaba.chaosblade.webapp;
+package com.alibaba.chaosblade.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebappApplication {
+public class API {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebappApplication.class, args);
+		SpringApplication.run(API.class, args);
 	}
 
 }

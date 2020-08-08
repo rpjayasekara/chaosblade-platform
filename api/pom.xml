@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.alibaba.chaosblade</groupId>
-	<artifactId>chaosblade-webapp</artifactId>
+	<artifactId>chaosblade-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webapp</name>
+	<name>api</name>
 	<description>Record manager module of the ChaosBlade platform</description>
 
 	<properties>
