@@ -8,6 +8,14 @@ import { CreateComponent } from './create/create.component';
 import { AddhostComponent } from './addhost/addhost.component';
 import { HistoryComponent } from './history/history.component';
 import { HostmanagerComponent } from './hostmanager/hostmanager.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatIconModule} from '@angular/material/icon';
+import {FormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +28,20 @@ import { HostmanagerComponent } from './hostmanager/hostmanager.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatSliderModule,
+    MatIconModule,
+    FormsModule,
+    MatCardModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

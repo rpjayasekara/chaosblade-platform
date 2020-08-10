@@ -1,1 +1,97 @@
-<p>create works!</p>
+<p>
+
+</p>
+<mat-card>
+  <mat-card-title>
+    Create Experiment
+  </mat-card-title>
+  <p></p>
+  <form class="example-form" [formGroup]="createExperimentForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Target</mat-label>
+      <mat-select formControlName="target" (selectionChange)="changeActionList()">
+        <mat-option *ngFor="let item of targetList" value="{{item}}" >{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="fill">
+      <mat-label>Action</mat-label>
+      <mat-select formControlName="action" (selectionChange)="changeFlagList()">
+        <mat-option *ngFor="let item of actionList" value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-card>
+      <mat-card-subtitle>Flag</mat-card-subtitle>
+      <mat-card-subtitle>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="addFlag()">
+          <mat-icon>Add</mat-icon>
+        </button>
+      </mat-card-subtitle>
+      <table class="example-full-width" cellspacing="0" *ngFor="let group of flagArray.controls; let i = index;" formArrayName="flags">
+        <tr [formGroupName]='i'>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Flag</mat-label>
+              <mat-select formControlName="flagName" (selectionChange)="updateDisabilityFlag(i, true)">
+                <mat-option value="option" *ngFor="let item of flagList" value="{{item.matcher}}" >{{item.matcher}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Value</mat-label>
+              <input formControlName="flagValue" matInput placeholder="Ex. California" >
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="removeFlag(i)">
+              <mat-icon>Remove</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+    <p></p>
+    <mat-card>
+      <mat-card-subtitle>Matcher</mat-card-subtitle>
+      <mat-card-subtitle>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="addMatcher()">
+          <mat-icon>Add</mat-icon>
+        </button>
+      </mat-card-subtitle>
+      <table class="example-full-width" cellspacing="0" *ngFor="let group of matcherArray.controls; let i = index;" formArrayName="matchers">
+        <tr [formGroupName]='i'>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Matcher</mat-label>
+              <mat-select formControlName="matcherName">
+                <mat-option value="option">cpu</mat-option>
+                <mat-option value="option">network</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Value</mat-label>
+              <input formControlName="matcherValue" matInput placeholder="Ex. California" (change)="changeActionList()">
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="removeMatcher(i)">
+              <mat-icon>Remove</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+    <p></p>
+    <mat-form-field appearance="fill">
+      <mat-label>Host</mat-label>
+      <mat-select>
+        <mat-option value="option">cpu</mat-option>
+        <mat-option value="option">network</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-card>
+
