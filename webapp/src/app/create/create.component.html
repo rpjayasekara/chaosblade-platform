@@ -15,6 +15,13 @@
     </mat-form-field>
     <p></p>
     <mat-form-field appearance="fill">
+      <mat-label>Scope</mat-label>
+      <mat-select formControlName="scope">
+        <mat-option *ngFor="let item of scopeList" value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="fill">
       <mat-label>Action</mat-label>
       <mat-select formControlName="action" (selectionChange)="changeFlagList()">
         <mat-option *ngFor="let item of actionList" value="{{item}}">{{item}}</mat-option>
@@ -32,15 +39,15 @@
           <td>
             <mat-form-field appearance="fill">
               <mat-label>Flag</mat-label>
-              <mat-select formControlName="flagName" (selectionChange)="updateDisabilityFlag(i, true)">
-                <mat-option value="option" *ngFor="let item of flagList" value="{{item.matcher}}" >{{item.matcher}}</mat-option>
+              <mat-select formControlName="flagName" (selectionChange)="updateDisabilityFlag(i)">
+                <mat-option *ngFor="let item of flagList" value="{{item.name}}" >{{item.name}}</mat-option>
               </mat-select>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>Value</mat-label>
-              <input formControlName="flagValue" matInput placeholder="Ex. California" >
+              <input formControlName="flagValue" matInput>
             </mat-form-field>
           </td>
           <td>
@@ -64,9 +71,8 @@
           <td>
             <mat-form-field appearance="fill">
               <mat-label>Matcher</mat-label>
-              <mat-select formControlName="matcherName">
-                <mat-option value="option">cpu</mat-option>
-                <mat-option value="option">network</mat-option>
+              <mat-select formControlName="matcherName" (selectionChange)="updateDisabilityMatcher(i)">
+                <mat-option *ngFor="let item of matcherList" value="{{item.name}}">{{item.name}}</mat-option>
               </mat-select>
             </mat-form-field>
           </td>

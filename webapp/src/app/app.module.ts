@@ -16,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     MatFormFieldModule,
