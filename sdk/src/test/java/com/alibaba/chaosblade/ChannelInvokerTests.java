@@ -25,7 +25,7 @@ public class ChannelInvokerTests {
     @Test
     void testGetExperimentStatus(){
 
-        StatusResponse statusResponse = channelInvoker.getExperimentStatus("url", "status 1a19239f8af1f055");
+        StatusResponse statusResponse = channelInvoker.getExperimentStatus("47.253.8.147:9526", "status 1a19239f8af1f055");
         assertThat(statusResponse).isNotNull();
         assertThat(statusResponse.getCode()).isEqualTo(200);
         assertThat(statusResponse.isSuccess()).isTrue();
@@ -36,7 +36,7 @@ public class ChannelInvokerTests {
     @Test
     void testCreateExperiment(){
 
-        CreateResponse createResponse = channelInvoker.createExperiment("url", "create cpu load --cpu-percent 50");
+        CreateResponse createResponse = channelInvoker.createExperiment("47.253.8.147:9526", "create cpu load --cpu-percent 50");
         assertThat(createResponse).isNotNull();
         assertThat(createResponse.getCode()).isEqualTo(200);
         assertThat(createResponse.isSuccess()).isTrue();

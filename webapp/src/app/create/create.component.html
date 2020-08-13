@@ -16,7 +16,7 @@
     <p></p>
     <mat-form-field appearance="fill">
       <mat-label>Scope</mat-label>
-      <mat-select formControlName="scope">
+      <mat-select formControlName="scope" (selectionChange)="changeActionList()">
         <mat-option *ngFor="let item of scopeList" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>

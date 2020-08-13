@@ -103,7 +103,8 @@ export class CreateComponent implements OnInit {
   }
 
   changeFlagList(): void {
-    this.flagList = []
+    this.flagList = [];
+    this.matcherList = [];
     const action = this.createExperimentForm.value.action;
     const target = this.createExperimentForm.value.target;
     const scope = this.createExperimentForm.value.scope;
@@ -112,6 +113,7 @@ export class CreateComponent implements OnInit {
     for (let i = 0; i < this.experimentModel.length; i++){
       const experimentObject = this.experimentModel[i];
       if (experimentObject.target === target && experimentObject.scope === scope){
+        console.log(experimentObject);
         // tslint:disable-next-line:forin prefer-for-of
         for (let j = 0; j < experimentObject.actions.length; j++){
           if (experimentObject.actions[j].action === action){
@@ -131,6 +133,8 @@ export class CreateComponent implements OnInit {
     this.experimentService.getExperiments().subscribe(data => {
         this.experimentModel = data
         this.setTargetList();
+      }, error => {
+        console.log(error);
       }
     );
   }
