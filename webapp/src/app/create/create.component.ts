@@ -18,13 +18,14 @@ export class CreateComponent implements OnInit {
   public userForm: FormGroup;
   public createExperimentForm: FormGroup;
   experimentModel;
+  hostList;
 
   // tslint:disable-next-line:variable-name
   constructor(private _fb: FormBuilder, private experimentService: ExperimentService) {
     this.createExperimentForm = this._fb.group({
       target: [],
       action: [],
-      host: [],
+      hostID: [],
       scope: [],
       matchers: this._fb.array([]),
       flags: this._fb.array([])
@@ -133,6 +134,13 @@ export class CreateComponent implements OnInit {
     this.experimentService.getExperiments().subscribe(data => {
         this.experimentModel = data
         this.setTargetList();
+        this.experimentService.getHosts().subscribe(host => {
+            this.hostList = host
+            this.setTargetList();
+          }, error => {
+            console.log(error);
+          }
+        );
       }, error => {
         console.log(error);
       }
@@ -172,7 +180,15 @@ export class CreateComponent implements OnInit {
         }
       }
     }
+  }
 
+  public createExperiment(): void {
+    this.experimentService.createExperiment(this.createExperimentForm.value).subscribe(data => {
+        console.log('experiment creation success');
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
 }

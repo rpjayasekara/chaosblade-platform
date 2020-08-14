@@ -27,6 +27,13 @@
         <mat-option *ngFor="let item of actionList" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="fill">
+      <mat-label>Host</mat-label>
+      <mat-select formControlName="hostID" >
+        <mat-option *ngFor="let item of hostList" value="{{item.hostID}}" >{{item.hostName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <mat-card>
       <mat-card-subtitle>Flag</mat-card-subtitle>
       <mat-card-subtitle>
@@ -91,13 +98,9 @@
       </table>
     </mat-card>
     <p></p>
-    <mat-form-field appearance="fill">
-      <mat-label>Host</mat-label>
-      <mat-select>
-        <mat-option value="option">cpu</mat-option>
-        <mat-option value="option">network</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="createExperiment()">
+      Create
+    </button>
   </form>
 </mat-card>
 
