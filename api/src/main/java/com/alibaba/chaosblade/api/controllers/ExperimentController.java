@@ -3,6 +3,8 @@ package com.alibaba.chaosblade.api.controllers;
 import com.alibaba.chaosblade.api.model.ExperimentSpec;
 import com.alibaba.chaosblade.api.service.ExperimentService;
 import com.alibaba.chaosblade.recordmanager.entities.Experiment;
+import com.alibaba.chaosblade.recordmanager.entities.Host;
+import com.alibaba.chaosblade.recordmanager.service.HostManager;
 import com.alibaba.chaosblade.sdk.parser.ModelSpec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,9 @@ public class ExperimentController {
 
     @Autowired
     ExperimentService experimentService;
+
+    @Autowired
+    HostManager hostManager;
 
     @RequestMapping(value = "experiment", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
