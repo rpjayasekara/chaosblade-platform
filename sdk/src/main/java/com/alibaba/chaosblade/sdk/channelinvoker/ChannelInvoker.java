@@ -83,9 +83,13 @@ public class ChannelInvoker {
 
         String url = "http://"+hostAddress+"/chaosblade?cmd="+command;
 
+        logger.info(command);
+
         try {
 
+            logger.info("hit!");
             DestroyResponse cr = restTemplate.getForObject(url, DestroyResponse.class);
+            logger.info("experiment destroyed");
             return cr;
 
         }catch (ResourceAccessException e){

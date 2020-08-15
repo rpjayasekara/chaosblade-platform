@@ -38,4 +38,10 @@ public class CommandBuilder {
 
     }
 
+    public String getDestroyCommand(String uid){
+        StringBuilder cmd = new StringBuilder("destroy ");
+        cmd.append(uid);
+        return cmd.toString();
+    }
+
 }

@@ -1,8 +1,5 @@
 package com.alibaba.chaosblade.api;
 
-import com.alibaba.chaosblade.recordmanager.entities.Host;
-import com.alibaba.chaosblade.recordmanager.service.HostManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

@@ -87,6 +87,7 @@ public class ExperimentService {
             experiment.setDateCreated(new Date());
             experiment.setFlags(flagsDB);
             experiment.setMatchers(mathcersDB);
+            experiment.setDestroyed(false);
             experiment.setStatus("success");
 
             experiment = experimentRecordManager.saveExperimentRecord(experiment);
@@ -104,6 +105,17 @@ public class ExperimentService {
     public List<ModelSpec> getAllExperimentModels(){
 
         return modelParser.getAllModels();
+
+    }
+
+    public Experiment destroyExperiment(Experiment experiment){
+
+        String cmd = "destroy"+" "+"77df0002c5f26a98";
+        Host host = experiment.getHost();
+        String url = host.getHostIP()+":"+host.getHostPort();
+        channelInvoker.destroyExperiment( url, cmd);
+        experiment.setDestroyed(true);
+        return experimentRecordManager.saveExperimentRecord(experiment);
 
     }
 

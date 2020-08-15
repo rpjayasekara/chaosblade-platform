@@ -3,7 +3,6 @@ package com.alibaba.chaosblade.api.controllers;
 import com.alibaba.chaosblade.api.model.ExperimentSpec;
 import com.alibaba.chaosblade.api.service.ExperimentService;
 import com.alibaba.chaosblade.recordmanager.entities.Experiment;
-import com.alibaba.chaosblade.recordmanager.entities.Host;
 import com.alibaba.chaosblade.recordmanager.service.HostManager;
 import com.alibaba.chaosblade.sdk.parser.ModelSpec;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +41,12 @@ public class ExperimentController {
 
     }
 
+    @RequestMapping(value = "experimentdelete", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody Experiment destroyExperiment(@RequestBody Experiment experiment){
 
+        return experimentService.destroyExperiment(experiment);
+
+    }
 
 }

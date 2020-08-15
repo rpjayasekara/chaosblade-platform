@@ -22,6 +22,8 @@ public class Experiment {
 
     private Date dateCreated;
 
+    private boolean isDestroyed;
+
     @ManyToOne(cascade = {CascadeType.ALL})
     private Host host;
 
@@ -31,7 +33,7 @@ public class Experiment {
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Flag> flags;
 
-    public Experiment(String uid, String target, String action, String status, Date dateCreated, Host host, List<Matcher> matchers, List<Flag> flags) {
+    public Experiment(String uid, String target, String action, String status, Date dateCreated, Host host, List<Matcher> matchers, List<Flag> flags, boolean isDestroyed) {
         this.uid = uid;
         this.target = target;
         this.action = action;
@@ -40,6 +42,7 @@ public class Experiment {
         this.host = host;
         this.matchers = matchers;
         this.flags = flags;
+        this.isDestroyed = isDestroyed;
     }
 
     public Experiment() {
@@ -110,4 +113,11 @@ public class Experiment {
         this.flags = flags;
     }
 
+    public boolean isDestroyed() {
+        return isDestroyed;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        isDestroyed = destroyed;
+    }
 }

@@ -47,7 +47,8 @@ public class ChannelInvokerTests {
     @Test
     void testDestroyExperiment(){
 
-        DestroyResponse destroyResponse = channelInvoker.destroyExperiment( "url","destroy f96a78fb43ae7623");
+        String cmd = "destroy"+" "+"77df0002c5f26a98";
+        DestroyResponse destroyResponse = channelInvoker.destroyExperiment( "47.253.8.147:9526",cmd);
         assertThat(destroyResponse).isNotNull();
         assertThat(destroyResponse.getCode()).isEqualTo(200);
         assertThat(destroyResponse.isSuccess()).isTrue();
