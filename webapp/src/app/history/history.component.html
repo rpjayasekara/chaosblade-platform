@@ -1,1 +1,65 @@
-<p>hiost works!</p>
+<p></p>
+<p>
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+</p>
+<mat-card>
+  <div class="mat-elevation-z8">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">uid</th>
+        <th scope="col">target</th>
+        <th scope="col">action</th>
+        <th scope="col">Flags</th>
+        <th scope="col">Matchers</th>
+        <th scope="col">status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of records; index as i">
+        <td>
+          {{ item.uid }}
+        </td>
+        <td>{{ item.target }}</td>
+        <td>{{ item.action}}</td>
+        <td>
+          <div *ngIf="item.flags.length>0 ;else flags">
+            <button class="badge badge-light" (click)="openFlags(item.flags)">click here</button>
+          </div>
+          <ng-template #flags>
+            <div>
+              no flags
+            </div>
+          </ng-template>
+        </td>
+        <td>
+          <div *ngIf="item.matchers.length>0 ;else matchers">
+            <button class="btn btn-outline-secondary btn-sm" (click)="openMatchers(item.matchers)">click here</button>
+          </div>
+          <ng-template #matchers>
+            <div>
+              no matchers
+            </div>
+          </ng-template>
+        </td>
+        <td>
+          <div *ngIf="item.destroyed ;else status" class="badge badge-danger">
+            Destroyed
+          </div>
+          <ng-template #status>
+            <div class="badge badge-success">
+              Active
+            </div>
+          </ng-template>
+        </td>
+        <td>
+          <div *ngIf="!item.destroyed" >
+            <button class="badge badge-danger" (click)="destroyExperiment(item)">Destroy</button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>
+

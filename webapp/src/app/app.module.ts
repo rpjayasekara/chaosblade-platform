@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateComponent } from './create/create.component';
 import { AddhostComponent } from './addhost/addhost.component';
-import { HistoryComponent } from './history/history.component';
+import { HistoryComponent, FlagsComponent, MatchersComponent } from './history/history.component';
 import { HostmanagerComponent } from './hostmanager/hostmanager.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
@@ -17,6 +17,9 @@ import {FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     CreateComponent,
     AddhostComponent,
     HistoryComponent,
-    HostmanagerComponent
+    HostmanagerComponent,
+    FlagsComponent,
+    MatchersComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatCardModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    NgbModule
   ],
   exports: [
     MatFormFieldModule,

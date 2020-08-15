@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ExperimentService } from '../experiment.service';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-create',
@@ -15,18 +18,22 @@ export class CreateComponent implements OnInit {
   public matcherList = [];
   public flagList = [];
   public scopeList = ['host', 'docker', 'node', 'pod'];
-  public userForm: FormGroup;
   public createExperimentForm: FormGroup;
   experimentModel;
   hostList;
+  public type;
+  // tslint:disable-next-line:variable-name
+  private _success = new Subject<string>();
+  staticAlertClosed = false;
+  successMessage = '';
 
   // tslint:disable-next-line:variable-name
   constructor(private _fb: FormBuilder, private experimentService: ExperimentService) {
     this.createExperimentForm = this._fb.group({
-      target: [],
-      action: [],
-      hostID: [],
-      scope: [],
+      target: ['', [Validators.required]],
+      action: ['', [Validators.required]],
+      hostID: ['', [Validators.required]],
+      scope: ['', [Validators.required]],
       matchers: this._fb.array([]),
       flags: this._fb.array([])
     });
@@ -34,15 +41,15 @@ export class CreateComponent implements OnInit {
 
   private addMatcherGroup(): FormGroup {
     return this._fb.group({
-      matcherName: [],
-      matcherValue: []
+      matcherName: ['', [Validators.required]],
+      matcherValue: ['', [Validators.required]]
     });
   }
 
   private addFlagGroup(): FormGroup {
     return this._fb.group({
-      flagName: [],
-      flagValue: []
+      flagName: ['', [Validators.required]],
+      flagValue: ['', [Validators.required]]
     });
   }
 
@@ -78,10 +85,6 @@ export class CreateComponent implements OnInit {
 
   get flagArray(): FormArray {
     return this.createExperimentForm.get('flags') as FormArray;
-  }
-
-  testChange(): void {
-    console.log(this.userForm.value);
   }
 
   changeActionList(): void {
@@ -131,6 +134,12 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = '');
     this.experimentService.getExperiments().subscribe(data => {
         this.experimentModel = data
         this.setTargetList();
@@ -183,12 +192,19 @@ export class CreateComponent implements OnInit {
   }
 
   public createExperiment(): void {
-    this.experimentService.createExperiment(this.createExperimentForm.value).subscribe(data => {
-        console.log('experiment creation success');
-      }, error => {
-        console.log(error);
-      }
-    );
+    if (this.createExperimentForm.valid){
+      this.experimentService.createExperiment(this.createExperimentForm.value).subscribe(data => {
+        this.type = 'success';
+        this._success.next(`Experiment successfully added!`);
+        }, error => {
+        this.type = 'danger';
+        this._success.next(`Problem when creating experiment!`);
+        }
+      );
+    } else {
+      this.type = 'danger';
+      this._success.next(`Please fill the required fields!`);
+    }
   }
 
 }

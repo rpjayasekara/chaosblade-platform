@@ -23,4 +23,16 @@ export class ExperimentService {
     return this.http.post('http://127.0.0.1:8080/chaosblade/experiment', experiment);
   }
 
+  addHost(host: any): Observable<object> {
+    return this.http.post('http://127.0.0.1:8080/chaosblade/hosts', host);
+  }
+
+  getExperimentRecords(): Observable<object> {
+    return this.http.get('http://127.0.0.1:8080/chaosblade/records');
+  }
+
+  destroyExperiment(experiment: any): Observable<object> {
+    return this.http.post('http://127.0.0.1:8080/chaosblade/experimentdelete', experiment);
+  }
+
 }

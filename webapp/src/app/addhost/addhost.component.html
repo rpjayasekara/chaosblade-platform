@@ -1,1 +1,31 @@
-<p>addhost works!</p>
+<p></p>
+<p>
+  <ngb-alert *ngIf="successMessage" [type]="type" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+</p>
+<mat-card>
+  <mat-card-title>
+    Add Host
+  </mat-card-title>
+  <p></p>
+  <form class="example-form" [formGroup]="addHostForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Host name</mat-label>
+      <input matInput formControlName="hostName">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Host IP</mat-label>
+      <input matInput formControlName="hostIP">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Host port</mat-label>
+      <input matInput formControlName="hostPort">
+    </mat-form-field>
+    <p></p>
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="addHost()">
+      Add
+    </button>
+  </form>
+</mat-card>
+
