@@ -1,6 +1,5 @@
 package com.alibaba.chaosblade.api.controllers;
 
-import com.alibaba.chaosblade.recordmanager.entities.Experiment;
 import com.alibaba.chaosblade.recordmanager.entities.Host;
 import com.alibaba.chaosblade.recordmanager.service.HostManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +32,15 @@ public class HostController {
     public @ResponseBody Host createHost(@RequestBody Host host){
 
         return hostManager.addHost(host);
+
+    }
+
+    @RequestMapping(value = "deletehost", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody Host deleteHost(@RequestBody Host host){
+
+        hostManager.removeHost(host.getHostID());
+        return host;
 
     }
 

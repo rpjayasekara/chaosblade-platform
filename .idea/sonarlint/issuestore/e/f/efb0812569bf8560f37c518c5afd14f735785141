@@ -1,0 +1,22 @@
+
+J
+java:S1066P"/Merge this if statement with the enclosing one.(§ıíÍüÿÿÿÿ
+d
+java:S2095o"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(„õ½‰
+0
+java:S1220""Move this file to a named package.
+@
+java:S1181Z"%Catch Exception instead of Throwable.(‡˜ÚÚøÿÿÿÿ
+M	java:S106X"9Replace this use of System.out or System.err by a logger.(Çğõ"
+N	java:S106L"9Replace this use of System.out or System.err by a logger.(¹°®„
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(ªõ»ùÿÿÿÿ
+`	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(Šğ®…úÿÿÿÿ
+S	java:S1063"9Replace this use of System.out or System.err by a logger.(ô›¶¿şÿÿÿÿ
+S
+java:S11970"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿ
+E
+java:S2093;"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+S	java:S106["9Replace this use of System.out or System.err by a logger.(×›£¾üÿÿÿÿ
+S	java:S106U"9Replace this use of System.out or System.err by a logger.(¡ˆ¥şÿÿÿÿ
+N	java:S106Q"9Replace this use of System.out or System.err by a logger.(ÆÀûı
+N	java:S106A"9Replace this use of System.out or System.err by a logger.(ùÖğÓ
