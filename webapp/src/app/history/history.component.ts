@@ -95,7 +95,6 @@ export class HistoryComponent implements OnInit {
     ).subscribe(() => this.successMessage = '');
     this.experimentService.getExperimentRecords().subscribe(data => {
         this.records = data;
-        console.log(this.records);
       }, error => {
         console.log(error);
       }

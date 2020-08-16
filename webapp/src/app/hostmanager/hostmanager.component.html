@@ -1,1 +1,29 @@
-<p>hostmanager works!</p>
+<p></p>
+<p>
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+</p>
+<mat-card>
+  <div class="mat-elevation-z8">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Host IP</th>
+        <th scope="col">Host port</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of hosts; index as i">
+        <td>
+          {{ item.hostName }}
+        </td>
+        <td>{{ item.hostIP }}</td>
+        <td>{{ item.hostPort}}</td>
+        <td>
+          <button class="badge badge-danger" (click)="remove(item)">Remove</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>
