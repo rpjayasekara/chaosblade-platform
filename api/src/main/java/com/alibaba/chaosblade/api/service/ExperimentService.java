@@ -110,7 +110,7 @@ public class ExperimentService {
 
     public Experiment destroyExperiment(Experiment experiment){
 
-        String cmd = "destroy"+" "+"77df0002c5f26a98";
+        String cmd = commandBuilder.getDestroyCommand(experiment.getUid());
         Host host = experiment.getHost();
         String url = host.getHostIP()+":"+host.getHostPort();
         channelInvoker.destroyExperiment( url, cmd);

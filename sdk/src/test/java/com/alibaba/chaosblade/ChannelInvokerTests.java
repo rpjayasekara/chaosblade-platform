@@ -52,7 +52,6 @@ public class ChannelInvokerTests {
         assertThat(destroyResponse).isNotNull();
         assertThat(destroyResponse.getCode()).isEqualTo(200);
         assertThat(destroyResponse.isSuccess()).isTrue();
-        assertThat(destroyResponse.getResult()).isNotNull();
 
     }
 
