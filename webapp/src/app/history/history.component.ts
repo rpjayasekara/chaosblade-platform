@@ -13,8 +13,8 @@ import {debounceTime} from 'rxjs/operators';
         <table class="table table-striped">
           <thead>
           <tr>
-            <th scope="col">uid</th>
-            <th scope="col">target</th>
+            <th scope="col">Flag</th>
+            <th scope="col">Value</th>
           </tr>
           </thead>
           <tbody>
@@ -45,8 +45,8 @@ export class FlagsComponent {
         <table class="table table-striped">
           <thead>
           <tr>
-            <th scope="col">uid</th>
-            <th scope="col">target</th>
+            <th scope="col">Matcher</th>
+            <th scope="col">Value</th>
           </tr>
           </thead>
           <tbody>

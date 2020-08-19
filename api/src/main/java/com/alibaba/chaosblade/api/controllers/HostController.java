@@ -37,10 +37,10 @@ public class HostController {
 
     @RequestMapping(value = "deletehost", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Host deleteHost(@RequestBody Host host){
+    public @ResponseBody List<Host> deleteHost(@RequestBody Host host){
 
         hostManager.removeHost(host.getHostID());
-        return host;
+        return hostManager.getAllHosts();
 
     }
 

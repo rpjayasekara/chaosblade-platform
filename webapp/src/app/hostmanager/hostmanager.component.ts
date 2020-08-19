@@ -37,13 +37,7 @@ export class HostmanagerComponent implements OnInit {
   remove(host: any): void {
     this.experimentService.removeHOst(host).subscribe(data => {
         this._success.next(`Host successfully removed`);
-        console.log("host removed");
-        this.experimentService.getExperimentRecords().subscribe(hosts => {
-            this.hosts = hosts;
-          }, error => {
-            console.log(error);
-          }
-        );
+        this.hosts = data;
       }, error => {
         console.log(error);
       }

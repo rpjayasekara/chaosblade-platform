@@ -32,6 +32,11 @@ export class AddhostComponent implements OnInit {
       this.experimentService.addHost(this.addHostForm.value).subscribe(data => {
           this.type = 'success';
           this._success.next(`Host successfully added!`);
+          this.addHostForm = this._fb.group({
+            hostName: ['', [Validators.required]],
+            hostIP: ['', [Validators.required]],
+            hostPort: ['', [Validators.required]]
+          });
         }, error => {
         this.type = 'danger';
         this._success.next(`Failed! Host adding`);
