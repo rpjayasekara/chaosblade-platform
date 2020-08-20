@@ -14,6 +14,7 @@ export class HostmanagerComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   private _success = new Subject<string>();
 
+  public type;
   staticAlertClosed = false;
   successMessage = '';
   constructor(private experimentService: ExperimentService) { }
@@ -36,10 +37,12 @@ export class HostmanagerComponent implements OnInit {
 
   remove(host: any): void {
     this.experimentService.removeHOst(host).subscribe(data => {
-        this._success.next(`Host successfully removed`);
-        this.hosts = data;
+      this.type = 'success';
+      this._success.next(`Host successfully removed`);
+      this.hosts = data;
       }, error => {
-        console.log(error);
+      this.type = 'danger';
+      this._success.next(`Cannot remove hosts which are being used already!`);
       }
     );
   }

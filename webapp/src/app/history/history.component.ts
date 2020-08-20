@@ -114,7 +114,7 @@ export class HistoryComponent implements OnInit {
 
   destroyExperiment(experiment: any): void {
     this.experimentService.destroyExperiment(experiment).subscribe(data => {
-      this._success.next(`Experiment successfully deleted.`);
+      this._success.next(`Experiment successfully destroyed.`);
       this.experimentService.getExperimentRecords().subscribe(records => {
           this.records = records;
         }, error => {

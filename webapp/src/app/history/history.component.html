@@ -14,6 +14,7 @@
         <th scope="col">uid</th>
         <th scope="col">Target</th>
         <th scope="col">Action</th>
+        <th scope="col">Host</th>
         <th scope="col">Flags</th>
         <th scope="col">Matchers</th>
         <th scope="col">Status</th>
@@ -26,6 +27,7 @@
         </td>
         <td>{{ item.target }}</td>
         <td>{{ item.action}}</td>
+        <td>{{ item.host.hostName}}</td>
         <td>
           <div *ngIf="item.flags.length>0 ;else flags">
             <button class="badge badge-light" (click)="openFlags(item.flags)">click here</button>
