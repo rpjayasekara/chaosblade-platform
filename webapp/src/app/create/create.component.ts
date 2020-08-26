@@ -195,7 +195,7 @@ export class CreateComponent implements OnInit {
     if (this.createExperimentForm.valid){
       this.experimentService.createExperiment(this.createExperimentForm.value).subscribe(data => {
         this.type = 'success';
-        this._success.next(`Experiment successfully added!`);
+        this._success.next(`Experiment successfully created!`);
         }, error => {
         this.type = 'danger';
         this._success.next(`Problem when creating experiment!`);

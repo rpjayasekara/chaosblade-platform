@@ -77,6 +77,7 @@ export class MatchersComponent {
 export class HistoryComponent implements OnInit {
 
   public records;
+  public type;
   // tslint:disable-next-line:variable-name
   private _success = new Subject<string>();
 
@@ -114,6 +115,7 @@ export class HistoryComponent implements OnInit {
 
   destroyExperiment(experiment: any): void {
     this.experimentService.destroyExperiment(experiment).subscribe(data => {
+      this.type = 'success';
       this._success.next(`Experiment successfully destroyed.`);
       this.experimentService.getExperimentRecords().subscribe(records => {
           this.records = records;
@@ -122,7 +124,47 @@ export class HistoryComponent implements OnInit {
         }
       );
       }, error => {
-        console.log(error);
+      this.type = 'danger';
+      this._success.next(`Problem when destroying the experiment!`);
+      }
+    );
+  }
+
+  reCreateExperiment(experiment: any): void {
+    let expInfo = {
+      target: experiment.target,
+      action: experiment.action,
+      hostID:  experiment.host.hostID,
+      scope: '',
+      flags: [],
+      matchers: []
+    };
+    for ( const i of experiment.flags){
+      const flag = {
+        flagName: i.experimentFlag,
+        flagValue: i.value
+      }
+      expInfo.flags.push(flag);
+    }
+    for ( const i of experiment.matchers){
+      const flag = {
+        matcherName: i.experimentMatcher,
+        matcherValue: i.value
+      }
+      expInfo.flags.push(flag);
+    }
+    this.experimentService.createExperiment(expInfo).subscribe(data => {
+        this.type = 'success';
+        this._success.next(`Experiment successfully recreated!`);
+        this.experimentService.getExperimentRecords().subscribe(records => {
+            this.records = records;
+          }, error => {
+            console.log(error);
+          }
+        );
+      }, error => {
+        this.type = 'danger';
+        this._success.next(`Problem when recreating experiment!`);
       }
     );
   }

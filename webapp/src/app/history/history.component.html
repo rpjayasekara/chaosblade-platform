@@ -1,6 +1,6 @@
 <p></p>
 <p>
-  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+  <ngb-alert *ngIf="successMessage" [type]="type" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
 </p>
 <mat-card>
   <mat-card-title>
@@ -59,9 +59,12 @@
           </ng-template>
         </td>
         <td>
-          <div *ngIf="!item.destroyed" >
+          <div *ngIf="!item.destroyed ;else recreate" >
             <button class="badge badge-danger" (click)="destroyExperiment(item)">Destroy</button>
           </div>
+          <ng-template #recreate>
+            <button class="badge badge-success" (click)="reCreateExperiment(item)">Recreate</button>
+          </ng-template>
         </td>
       </tr>
       </tbody>
