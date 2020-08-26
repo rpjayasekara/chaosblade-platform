@@ -1,6 +1,5 @@
 package com.alibaba.chaosblade.sdk.channelinvoker;
 
-import com.alibaba.chaosblade.sdk.parser.ModelParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,18 @@ import java.util.*;
 @Service
 public class ChannelInvoker {
 
+    private final String head;
+
+    private final String common;
+
+    private final String error;
+
+    public ChannelInvoker(){
+        this.head = "http://";
+        this.common = "/chaosblade?cmd=";
+        this.error = "Problem connecting to the host";
+    }
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -38,16 +49,17 @@ public class ChannelInvoker {
         converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON));
         restTemplate.getMessageConverters().add(0, converter);
 
-        String url = "http://"+hostAddress+"/chaosblade?cmd="+command;
+        String url = this.head+hostAddress+this.common+command;
 
         try {
 
             StatusResponse cr = restTemplate.getForObject(url, StatusResponse.class);
+            logger.info("Experiment status retrieved");
             return cr;
 
         }catch (ResourceAccessException e){
 
-            logger.error("Problem connecting to the host");
+            logger.error(this.error);
             return null;
 
         }
@@ -59,16 +71,17 @@ public class ChannelInvoker {
         converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON));
         restTemplate.getMessageConverters().add(0, converter);
 
-        String url = "http://"+hostAddress+"/chaosblade?cmd="+command;
+        String url = this.head+hostAddress+this.common+command;
 
         try {
 
             CreateResponse cr = restTemplate.getForObject(url, CreateResponse.class);
+            logger.info("Experiment created");
             return cr;
 
         }catch (ResourceAccessException e){
 
-            logger.error("Problem connecting to the host");
+            logger.error(error);
             return null;
 
         }
@@ -81,7 +94,7 @@ public class ChannelInvoker {
         converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON));
         restTemplate.getMessageConverters().add(0, converter);
 
-        String url = "http://"+hostAddress+"/chaosblade?cmd="+command;
+        String url = this.head+hostAddress+this.common+command;
 
         logger.info(command);
 
@@ -94,7 +107,7 @@ public class ChannelInvoker {
 
         }catch (ResourceAccessException e){
 
-            logger.error("Problem connecting to the host");
+            logger.error(error);
             return null;
 
         }

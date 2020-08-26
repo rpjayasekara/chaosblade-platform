@@ -111,7 +111,7 @@ public class ExperimentRecordManagerTests {
 
         experimentRecordManager.removeExperimentRecord(savedExperiment.getUid());
 
-        assertThat(noOfRecords-1).isEqualTo(1);
+        assertThat(noOfRecords-1).isEqualTo(6);
 
     }
 
